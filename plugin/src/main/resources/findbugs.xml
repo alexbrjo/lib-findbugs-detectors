@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--TODO: align names before the release-->
+<FindbugsPlugin
+  pluginid="io.jenkins.lib.findbugs.detectors"
+  defaultenabled="true"
+  provider="Jenkins project" 
+  website="https://jenkins.io">
+
+  <!-- Detector ordering constraints -->
+  <OrderingConstraints>
+  </OrderingConstraints>
+	
+  <!-- Detectors -->
+  <Detector class="jenkins.lib.findbugs.detectors.StaticJenkinsInstanceDetector"
+            speed="fast"
+            reports="STCAL_STATIC_JENKINS_INSTANCE"
+            hidden="false" />
+
+  <!-- Bug patterns -->
+  <BugPattern abbrev="JENKINS" type="STCAL_STATIC_JENKINS_INSTANCE"
+                    category="CORRECTNESS"/>
+</FindbugsPlugin>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<MessageCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:noNamespaceSchemaLocation="messagecollection.xsd">
+
+  <!-- Plugin information -->
+  <Plugin>
+    <ShortDescription>Demonstration FindBugs plugin</ShortDescription>
+    <Details>
+      <![CDATA[
+      <p>This plugin demonstrates how to write a FindBugs plugin.</p>
+      ]]>
+    </Details>
+  </Plugin>
+	
+  <!-- Detectors -->
+  <Detector class="jenkins.lib.findbugs.detectors.StaticJenkinsInstanceDetector">
+    <Details>
+      <![CDATA[
+        <p>Detects usages of static Jenkins instances in the code</p>
+      ]]>
+    </Details>
+  </Detector>
+	
+  <!-- Bug patterns -->
+  <BugPattern type="STCAL_STATIC_JENKINS_INSTANCE">
+    <ShortDescription>Usage of static Jenkins instance</ShortDescription>
+    <LongDescription>Usage of static Jenkins instance in field {1}</LongDescription>
+    <Details>
+      <![CDATA[
+        <p>
+          Static Jenkins instances are hazardous, because this instance may actually change during the JVM run.
+          Example - Unit testing with Jenkins Test harness.
+          It is recommended to use <code>jenkins.model.Jenkins.getInstance()</code> in the code.
+        </p>
+      ]]>
+    </Details>
+  </BugPattern>
+	
+  <!-- Bug codes -->
+  <BugCode abbrev="JENKINS">Jenkins-specific bugs</BugCode>
+</MessageCollection>

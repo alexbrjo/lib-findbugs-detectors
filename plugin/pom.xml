@@ -1,0 +1,41 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <groupId>org.jenkins-ci.lib.findbugs</groupId>
+    <artifactId>pom</artifactId>
+    <version>0.1-SNAPSHOT</version>
+  </parent>
+  
+  <groupId>org.jenkins-ci.lib.findbugs</groupId>
+  <artifactId>detectors</artifactId>
+  <packaging>jar</packaging>
+  <version>0.1-SNAPSHOT</version>
+
+  <name>Jenkins Detectors Plugin for FindBugs</name>
+  <description>Sample Jenkins Plugin, which contains FindBugs issues, which can be discovered by the detector</description>
+
+  <developers>
+    <developer>
+      <name>Oleg Nenashev</name>
+      <id>oleg_nenashev</id>
+      <email>o.v.nenashev@gmail.com</email>
+    </developer>
+  </developers>
+
+  <build>
+    <resources>
+      <resource>
+        <directory>${basedir}/src/main/resources</directory>
+        <filtering>false</filtering>
+      </resource>
+    </resources>
+  </build>
+  <dependencies>
+    <dependency>
+      <groupId>com.google.code.findbugs</groupId>
+      <artifactId>findbugs</artifactId>
+      <type>jar</type>
+    </dependency>
+  </dependencies>
+</project>
