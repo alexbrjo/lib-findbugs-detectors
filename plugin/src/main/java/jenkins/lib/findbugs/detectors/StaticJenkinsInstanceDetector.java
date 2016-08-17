@@ -82,7 +82,7 @@ public class StaticJenkinsInstanceDetector extends BytecodeScanningDetector {
         
         boolean isJenkinsInstance = false;
         try {
-            if (jenkinsType.subclassOf(jenkinsType)) {
+            if (((ObjectType)fieldtype).subclassOf(jenkinsType)) {
                 isJenkinsInstance = true;
             }
         } catch (ClassNotFoundException e) {
@@ -92,9 +92,7 @@ public class StaticJenkinsInstanceDetector extends BytecodeScanningDetector {
         if (isJenkinsInstance) {
             reporter.reportBug(new BugInstance(this, "STCAL_STATIC_JENKINS_INSTANCE", NORMAL_PRIORITY)
                     .addClass(currentClass)
-                    .addReferencedField(this)
-                    //TODO: It does not actually capture the string. Why?
-                    .addSourceLine(this));
+                    .addField(currentClass, aField.getName(), aField.getSignature(), true));
         }
     }
 }
