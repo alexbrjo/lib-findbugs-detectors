@@ -15,8 +15,12 @@
             speed="fast"
             reports="STCAL_STATIC_JENKINS_INSTANCE"
             hidden="false" />
+  <Detector class="jenkins.lib.findbugs.detectors.CloseQuietlyInsteadOfLoggingDetector"
+            speed="fast"
+            reports="CLOSE_QUIETLY_NO_LOGGING"
+            hidden="false" />
 
   <!-- Bug patterns -->
-  <BugPattern abbrev="JENKINS" type="STCAL_STATIC_JENKINS_INSTANCE"
-                    category="CORRECTNESS"/>
+  <BugPattern abbrev="JENKINS" type="STCAL_STATIC_JENKINS_INSTANCE" category="CORRECTNESS"/>
+  <BugPattern abbrev="JENKINS" type="CLOSE_QUIETLY_NO_LOGGING" category="CORRECTNESS"/>
 </FindbugsPlugin>

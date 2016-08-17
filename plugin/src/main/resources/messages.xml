@@ -21,6 +21,13 @@
       ]]>
     </Details>
   </Detector>
+  <Detector class="jenkins.lib.findbugs.detectors.CloseQuietlyInsteadOfLoggingDetector">
+    <Details>
+      <![CDATA[
+        <p>Detects usages of <code>hudson.IOUtils.closeQuietly()</code> and <code>org.apache.commons.io.IOUtils</code></p>
+      ]]>
+    </Details>
+  </Detector>
 	
   <!-- Bug patterns -->
   <BugPattern type="STCAL_STATIC_JENKINS_INSTANCE">
@@ -32,6 +39,20 @@
           Static Jenkins instances are hazardous, because this instance may actually change during the JVM run.
           Example - Unit testing with Jenkins Test harness.
           It is recommended to use <code>jenkins.model.Jenkins.getInstance()</code> in the code.
+        </p>
+      ]]>
+    </Details>
+  </BugPattern>
+  <BugPattern type="CLOSE_QUIETLY_NO_LOGGING">
+    <ShortDescription>Usage of closeQuietly() without logging</ShortDescription>
+    <LongDescription>Usage of closeQueitly in method {1}}</LongDescription>
+    <Details>
+      <![CDATA[
+        <p>
+          Usage of <code>closeQuietly()</code> suppresses error propagation in the code.
+          It may be really important for file operations, where unclosed file handles may cause unpredictable behavior of Jenkins.
+          It is recommended to use a try-catch block, which forwards the IO exception.
+          It also can be done by TODO:new API method...
         </p>
       ]]>
     </Details>
