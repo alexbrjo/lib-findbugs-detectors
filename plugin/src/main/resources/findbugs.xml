@@ -15,6 +15,14 @@
             speed="fast"
             reports="STCAL_STATIC_JENKINS_INSTANCE"
             hidden="false" />
+  <Detector class="jenkins.lib.findbugs.detectors.PipelineIncompatibleBuildStepDetector"
+            speed="fast"
+            reports="PIPELINE_INCOMPATIBLE_BUILD_STEP"
+            hidden="false" />
+  <Detector class="jenkins.lib.findbugs.detectors.PipelineIncompatibleBuildWrapperDetector"
+            speed="fast"
+            reports="PIPELINE_INCOMPATIBLE_BUILD_WRAPPER"
+            hidden="false" />
   <Detector class="jenkins.lib.findbugs.detectors.CloseQuietlyInsteadOfLoggingDetector"
             speed="fast"
             reports="CLOSE_QUIETLY_NO_LOGGING"
@@ -22,5 +30,7 @@
 
   <!-- Bug patterns -->
   <BugPattern abbrev="JENKINS" type="STCAL_STATIC_JENKINS_INSTANCE" category="CORRECTNESS"/>
+  <BugPattern abbrev="JENKINS" type="PIPELINE_INCOMPATIBLE_BUILD_STEP" category="CORRECTNESS"/>
+  <BugPattern abbrev="JENKINS" type="PIPELINE_INCOMPATIBLE_BUILD_WRAPPER" category="CORRECTNESS"/>
   <BugPattern abbrev="JENKINS" type="CLOSE_QUIETLY_NO_LOGGING" category="CORRECTNESS"/>
 </FindbugsPlugin>

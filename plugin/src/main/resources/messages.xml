@@ -21,6 +21,20 @@
       ]]>
     </Details>
   </Detector>
+  <Detector class="jenkins.lib.findbugs.detectors.PipelineIncompatibleBuildStepDetector">
+    <Details>
+      <![CDATA[
+        <p>Detects Build steps that are not compatible with pipeline</p>
+      ]]>
+    </Details>
+  </Detector>
+  <Detector class="jenkins.lib.findbugs.detectors.PipelineIncompatibleBuildWrapperDetector">
+    <Details>
+      <![CDATA[
+        <p>Detects Build wrappers that are not compatible with pipeline</p>
+      ]]>
+    </Details>
+  </Detector>
   <Detector class="jenkins.lib.findbugs.detectors.CloseQuietlyInsteadOfLoggingDetector">
     <Details>
       <![CDATA[
@@ -39,6 +53,30 @@
           Static Jenkins instances are hazardous, because this instance may actually change during the JVM run.
           Example - Unit testing with Jenkins Test harness.
           It is recommended to use <code>jenkins.model.Jenkins.getInstance()</code> in the code.
+        </p>
+      ]]>
+    </Details>
+  </BugPattern>
+  <BugPattern type="PIPELINE_INCOMPATIBLE_BUILD_STEP">
+    <ShortDescription>Pipeline incompatible build step</ShortDescription>
+    <LongDescription>Build step is compatible with AbstractProject but not Pipeline</LongDescription>
+    <Details>
+      <![CDATA[
+        <p>
+          Your Build step (Builder, Publisher, etc..) will not be able to run on Jenkins Pipelines.
+          It is recommended for Build steps to implement <code>jenkins.tasks.SimpleBuildStep</code>.
+        </p>
+      ]]>
+    </Details>
+  </BugPattern>
+  <BugPattern type="PIPELINE_INCOMPATIBLE_BUILD_WRAPPER">
+    <ShortDescription>Pipeline incompatible build wrapper</ShortDescription>
+    <LongDescription>Build wrapper is compatible with AbstractProject but not Pipeline</LongDescription>
+    <Details>
+      <![CDATA[
+        <p>
+          Your Build wrapper will not be able to run on Jenkins Pipelines.
+          It is recommended for BuildWrappers to implement <code>jenkins.tasks.SimpleBuildWrapper</code>.
         </p>
       ]]>
     </Details>
